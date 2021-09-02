@@ -7,6 +7,9 @@ const featured =mongoose.model('Featured',{
     Location:{
         type:String
     },
+    Address:{
+        type:String
+    },
     Price:{
         type:Number
     }

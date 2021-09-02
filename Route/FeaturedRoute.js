@@ -5,11 +5,13 @@ const featured = require('../Model/FeaturedModel');
 router.post('/Featured/insert', function(req,res){
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
+    const Address = req.body.Address
     const Price = req.body.Price;
 
     const data = new featured({
         Hotel_name:Hotel_name,
         Location:Location,
+        Address:Address,
         Price:Price
     })
     data.save()
