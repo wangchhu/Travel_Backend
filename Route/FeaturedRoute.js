@@ -2,13 +2,21 @@ const express= require('express');
 const router= express.Router();
 const featured = require('../Model/FeaturedModel');
 
-router.post('/Featured/insert', function(req,res){
+router.post('/Featured/insert',upload.single('Image'), function(req,res){
+   
+    if(req.file==undefined){
+        return res.status(400).json({
+            message:"Invalid file format"})
+    }
+
+    const path =req.file.filename;
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
     const Address = req.body.Address
     const Price = req.body.Price;
 
     const data = new featured({
+        Image:path,
         Hotel_name:Hotel_name,
         Location:Location,
         Address:Address,
@@ -19,7 +27,7 @@ router.post('/Featured/insert', function(req,res){
         res.status(201).json({success:true, message: "Featured Hotel Inserted"})
     })
     .catch(function(err){
-        res.status(500).json({error:"Error"})
+        res.status(500).json({message:err})
     })
 
 })
