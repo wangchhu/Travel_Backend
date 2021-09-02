@@ -1,6 +1,7 @@
 const express= require('express');
 const router= express.Router();
 const cities = require('../Model/CitiesModel');
+const upload=require('../middleware/upload');
 
 router.post('/Cities/insert', upload.single('Image'), function(req,res){
     

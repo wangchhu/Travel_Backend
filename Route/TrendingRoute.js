@@ -1,6 +1,7 @@
 const express= require('express');
 const router= express.Router();
 const trending = require('../Model/TrendingModel');
+const upload=require('../middleware/upload');
 
 router.post('/Trending/insert', upload.single('Image'), function(req,res){
     if (req.file==undefined){
@@ -11,14 +12,12 @@ router.post('/Trending/insert', upload.single('Image'), function(req,res){
     const path =req.file.filename;
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
-    const Address = req.body.Address;
     const Price = req.body.Price;
 
     const data = new trending({
         Image:path,
         Hotel_name:Hotel_name,
         Location:Location,
-        Address: Address,
         Price:Price
     })
     data.save()

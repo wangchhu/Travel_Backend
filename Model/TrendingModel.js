@@ -10,9 +10,6 @@ const trending =mongoose.model('Trending',{
     Location:{
         type:String
     },
-    Address:{
-        type:String
-    },
     Price:{
         type:Number
     }

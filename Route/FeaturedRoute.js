@@ -1,6 +1,7 @@
 const express= require('express');
 const router= express.Router();
 const featured = require('../Model/FeaturedModel');
+const upload=require('../middleware/upload');
 
 router.post('/Featured/insert',upload.single('Image'), function(req,res){
    
@@ -12,14 +13,12 @@ router.post('/Featured/insert',upload.single('Image'), function(req,res){
     const path =req.file.filename;
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
-    const Address = req.body.Address
     const Price = req.body.Price;
 
     const data = new featured({
         Image:path,
         Hotel_name:Hotel_name,
         Location:Location,
-        Address:Address,
         Price:Price
     })
     data.save()

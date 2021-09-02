@@ -9,6 +9,7 @@ const  bodyParser = require('body-parser')
 const connectDB = require('./DB/Traveldb');
 const BookingRoute= require('./Route/BookingRoute');
 const TrendingRoute= require('./Route/TrendingRoute');
+const FeaturedRoute = require('./Route/FeaturedRoute');
 
 const app = express(); // third party
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use("/pictures",express.static(publicDir));
 
 app.use(BookingRoute);
 app.use(TrendingRoute);
+app.use(FeaturedRoute);
 
 
 app.listen(3001, (err)=> {
