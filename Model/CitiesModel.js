@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const cities =mongoose.model('Cities',{
+    Image:{
+        type:String
+    },
     City_name:{
         type:String
     },
