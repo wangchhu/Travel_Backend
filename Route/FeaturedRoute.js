@@ -32,4 +32,13 @@ router.post('/Featured/insert',upload.single('Image'), function(req,res){
 
 })
 
+router.get('/featured/show', function(req,res){
+    featured.find().then(function(data){
+        res.status(200).json(data)
+    })
+    .catch(function(e){
+        res.status(201).json({error:e})
+    })
+})
+
 module.exports = router;
