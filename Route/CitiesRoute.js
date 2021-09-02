@@ -14,7 +14,7 @@ router.post('/Cities/insert', function(req,res){
     })
     data.save()
     .then(function(result){
-        res.status(201).json({success:true, message: "Trending Hotel Inserted"})
+        res.status(201).json({success:true, message: "City Hotel Inserted"})
     })
     .catch(function(err){
         res.status(500).json({error:"Error"})
