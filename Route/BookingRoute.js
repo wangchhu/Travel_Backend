@@ -3,6 +3,9 @@ const router= express.Router();
 const client =require('../Model/BookingModel');
 
 router.post('/client/insert', function(req,res){
+
+    console.log(req.body)
+
         const client_Username = req.body.client_Username;
         const Email = req.body.Email;
         const Phone = req.body.Phone;
