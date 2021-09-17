@@ -4,7 +4,7 @@ const express = require("express");
 
 const path = require('path'); // no need to install 
 const  bodyParser = require('body-parser') 
-// const cors=require('cors');
+var cors=require('cors');
 
 const connectDB = require('./DB/Traveldb');
 const BookingRoute= require('./Route/BookingRoute');
@@ -19,22 +19,22 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
-    res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With, Content_Type, Accept, Authorization");
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT,POST, PATCH, DELETE,GET');
-        return res.status(200).json({});
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+//     res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With, Content_Type, Accept, Authorization");
+//     if (req.method === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods', 'PUT,POST, PATCH, DELETE,GET');
+//         return res.status(200).json({});
+//     }
+//     next();
+// });
 
 app.set('view engine', 'hbs');
 
 const publicDir = path.join(__dirname, 'pictures');
 app.use("/pictures",express.static(publicDir));
 
-// app.use(cors);
+app.use(cors());
 
 // router.post('/client/insert', function(req,res){
 //     console.log(req.body)
