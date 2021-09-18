@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const cities =mongoose.model('Cities',{
-    Image:{
+    path:{
         type:String
     },
     City_name:{

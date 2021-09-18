@@ -10,18 +10,18 @@ router.post('/Featured/insert',upload.single('Image'), function(req,res){
             message:"Invalid file format"})
     }
 
-    const path =req.file.filename;
+    const path =req.file.path;
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
     const Price = req.body.Price;
 
-    const data = new featured({
-        Image:path,
+    const fdata = new featured({
+        path:path,
         Hotel_name:Hotel_name,
         Location:Location,
         Price:Price
     })
-    data.save()
+    fdata.save()
     .then(function(result){
         res.status(201).json({success:true, message: "Featured Hotel Inserted"})
     })
@@ -31,7 +31,8 @@ router.post('/Featured/insert',upload.single('Image'), function(req,res){
 
 })
 
-router.get('/featured/show', function(req,res){
+router.get('/Featured/show', function(req,res){
+    console.log(req.body)
     featured.find().then(function(data){
         res.status(200).json(data)
     })

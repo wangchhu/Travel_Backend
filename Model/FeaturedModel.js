@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const featured =mongoose.model('Featured',{
-    Image:{
+    path:{
         type:String
     },
     Hotel_name:{

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const client =mongoose.model('Client',{
     client_Username:{
-        type:String
+        type:String,
+        required: true  
     },
     Email:{
         type:String

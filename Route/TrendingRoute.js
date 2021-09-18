@@ -9,13 +9,13 @@ router.post('/Trending/insert', upload.single('Image'), function(req,res){
             message:"Invalid file format"
         })
     }
-    const path =req.file.filename;
+    const path =req.file.path;
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
     const Price = req.body.Price;
 
     const tdata = new trending({
-        Image:path,
+        path:path,
         Hotel_name:Hotel_name,
         Location:Location,
         Price:Price

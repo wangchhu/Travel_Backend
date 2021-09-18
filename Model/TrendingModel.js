@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const trending =mongoose.model('Trending',{
-    Image:{
+    path:{
         type:String
     },
     Hotel_name:{
