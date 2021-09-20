@@ -2,16 +2,19 @@ const mongoose = require('mongoose');
 
 const cities =mongoose.model('Cities',{
     path:{
-        type:String
+        type:String,
+        required:true
     },
     City_name:{
-        type:String
+        type:String,
+        required:true
     },
     Number_of_Hotel:{
         type:Number
     },
     Average_Price:{
-        type:Number
+        type:Number,
+        required:true
     }
 })
 module.exports=cities;

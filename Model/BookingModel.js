@@ -6,7 +6,8 @@ const client =mongoose.model('Client',{
         required: true  
     },
     Email:{
-        type:String
+        type:String,
+        required:true
     },
     Phone:{
         type:String
@@ -15,10 +16,12 @@ const client =mongoose.model('Client',{
         type:Number
     },
     Check_in:{
-        type:String
+        type:String,
+        required:true
     },
     Check_out:{
-        type:String
+        type:String,
+        required:true
     },
     Guest:{
         type:Number
