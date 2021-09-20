@@ -48,7 +48,7 @@ router.put('/Featured/update', function(req,res){
     const Hotel_name = req.body.Hotel_name;
     const Location = req.body.Location;
     const Price= req.body.Price;
-    trending.updateOne({_id : id},{Hotel_name : Hotel_name,Location : Location, Price: Price}).then(function(){
+    featured.updateOne({_id : id},{Hotel_name : Hotel_name,Location : Location, Price: Price}).then(function(){
         res.status(200).json({message : true})
     })
     .catch(function(err){
@@ -58,7 +58,7 @@ router.put('/Featured/update', function(req,res){
 
 router.get('/Featured/single/:id', function(req,res){
     const id= req.params.id;
-    trending.findOne({_id:id})
+    featured.findOne({_id:id})
     .then(function(data){
         res.status(200).json(data)
     })
@@ -69,7 +69,7 @@ router.get('/Featured/single/:id', function(req,res){
 
 router.delete('/Featured/delete/:id', function(req,res){
     const id=req.params.id;
-    trending.deleteOne({_id: id})
+    featured.deleteOne({_id: id})
     .then((result)=>{
         res.status(200).json({message:"Deleted"})
     })
