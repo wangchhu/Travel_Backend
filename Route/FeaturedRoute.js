@@ -41,4 +41,42 @@ router.get('/Featured/show', function(req,res){
     })
 })
 
+
+router.put('/Featured/update', function(req,res){
+    console.log(req.body)
+    const id = req.body.id;
+    const Hotel_name = req.body.Hotel_name;
+    const Location = req.body.Location;
+    const Price= req.body.Price;
+    trending.updateOne({_id : id},{Hotel_name : Hotel_name,Location : Location, Price: Price}).then(function(){
+        res.status(200).json({message : true})
+    })
+    .catch(function(err){
+        console.log(err)
+    })
+})
+
+router.get('/Featured/single/:id', function(req,res){
+    const id= req.params.id;
+    trending.findOne({_id:id})
+    .then(function(data){
+        res.status(200).json(data)
+    })
+    .catch(function(e){
+        res.status(500).json({error:e})
+    })
+})
+
+router.delete('/Featured/delete/:id', function(req,res){
+    const id=req.params.id;
+    trending.deleteOne({_id: id})
+    .then((result)=>{
+        res.status(200).json({message:"Deleted"})
+    })
+    .catch((e)=>{
+        res.status(500).json({error:e})
+    })
+})
+
+
 module.exports = router;
